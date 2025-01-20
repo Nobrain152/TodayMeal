@@ -22,6 +22,6 @@ urlpatterns = [
     # www.xxx.com/admin -> 函数
     # path('admin/', admin.site.urls),
 
-    
-    path('index/', views.index)
+    # 小程序初始界面登录
+    path('backend/index/', views.index)
 ]
