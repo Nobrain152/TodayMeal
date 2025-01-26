@@ -23,5 +23,10 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
 
     # 小程序初始界面登录
-    path('backend/index/', views.index)
+    path('backend/index/', views.index),
+
+    # 每周菜谱配置界面
+    path('backend/initialization_recipe', views.initialization_recipe),
+    # 每周菜谱通过配置生成每周菜谱
+    path('backend/generate_weekly_menu', views.generate_weekly_menu),
 ]
