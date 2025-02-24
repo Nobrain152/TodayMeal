@@ -29,3 +29,17 @@ def generate_weekly_menu(request):
 
     return JsonResponse({'code': 0, 'data': data})
     return HttpResponse("返回生成好的食谱对象")
+
+
+"""
+更新食谱的视图函数。
+
+参数:
+request (HttpRequest): 包含客户端请求信息的对象。
+
+返回:
+HttpResponse: 返回一个包含更新食谱成功信息的HTTP响应。
+"""
+def add_recipe(request):
+    
+    return HttpResponse("更新食谱")
