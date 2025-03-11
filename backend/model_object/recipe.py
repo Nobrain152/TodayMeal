@@ -12,6 +12,19 @@ class Recipe():
         self.cooking_time_list = CookingTime(name, only)
         pass
 
-    
-    def calculate_food_preparation(self):
+    def calculate_cooking_time(self):
+        """
+        计算烹饪时间
+
+        该方法用于计算烹饪所需的时间。具体实现需要根据烹饪的食材和烹饪方式来确定。
+
+        返回:
+            int: 烹饪所需的时间（单位：分钟）
+        """
         pass
+    
+    # 计算食材
+    def calcuate_ingredients(self):
+        pass
+    
+
