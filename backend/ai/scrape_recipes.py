@@ -67,7 +67,9 @@ def doubao_img():
 
     print(response.choices[0])
 
-def doubao_text():
+# 联网工具
+# 抓取菜谱有联网实时性的需求，因此需要联网工具
+def scrape_recipes():
     # 请确保您已将 API Key 存储在环境变量 ARK_API_KEY 中
     # 初始化Openai客户端，从环境变量中读取您的API Key
     client = OpenAI(
@@ -82,7 +84,7 @@ def doubao_text():
     # Non-streaming:
     print("----- standard request -----")
     completion = client.chat.completions.create(
-        model="bot-20250305143505-pkczk",  # bot-20250305143505-pkczk 为您当前的智能体的ID，注意此处与Chat API存在差异。差异对比详见 SDK使用指南
+        model="bot-20250304142343-b7fx6",  # bot-20250304142343-b7fx6 为您当前的智能体的ID，注意此处与Chat API存在差异。差异对比详见 SDK使用指南
         messages=[
             {"role": "system", "content": "规整菜谱请按照以下格式进行规整。\n" + content},
             {"role": "user", "content": "从下厨房规整一份鱼香肉丝菜谱。"},
@@ -94,6 +96,37 @@ def doubao_text():
         print(completion.references)
 
 
+    
+
+
+# 非联网工具
+# 按输入食材生成菜谱
+# 只是说规划做多少菜的话，不联网的工具其实就可以
+def generate_recipe_based_on_ingredients():
+    # 请确保您已将 API Key 存储在环境变量 ARK_API_KEY 中
+    # 初始化Openai客户端，从环境变量中读取您的API Key
+    client = OpenAI(
+        # 此为默认路径，您可根据业务所在地域进行配置
+        base_url="https://ark.cn-beijing.volces.com/api/v3/bots",
+        # 从环境变量中获取您的 API Key
+        api_key="0db98a0f-5cc0-46b3-9b8b-6646316133cf"
+    )
+
+    # Non-streaming:
+    print("----- standard request -----")
+    completion = client.chat.completions.create(
+        model="bot-20250313170347-db6x7",  # bot-20250313170347-db6x7 为您当前的智能体的ID，注意此处与Chat API存在差异。差异对比详见 SDK使用指南
+        messages=[
+            {"role": "system", "content": "你是一个家庭主妇。"},
+            {"role": "user", "content": "家里有500g的鸡腿，400g的藕，请帮我规划一下明天两人份的便当要做什么菜"},
+        ],
+    )
+    print(completion)
+    print(completion.choices[0].message.content)
+    if hasattr(completion, "references"):
+        print(completion.references)
+
+    
     # # Multi-round：
     # print("----- multiple rounds request -----")
     # completion = client.chat.completions.create(
@@ -128,31 +161,7 @@ def doubao_text():
     #         print(chunk.choices[0].delta.content, end="")
     # print()
 
-def doubao_text_2():
-    # 请确保您已将 API Key 存储在环境变量 ARK_API_KEY 中
-    # 初始化Openai客户端，从环境变量中读取您的API Key
-    client = OpenAI(
-        # 此为默认路径，您可根据业务所在地域进行配置
-        base_url="https://ark.cn-beijing.volces.com/api/v3/bots",
-        # 从环境变量中获取您的 API Key
-        api_key="0db98a0f-5cc0-46b3-9b8b-6646316133cf"
-    )
-
-    # Non-streaming:
-    print("----- standard request -----")
-    completion = client.chat.completions.create(
-        model="bot-20250305143505-pkczk",  # bot-20250305143505-pkczk 为您当前的智能体的ID，注意此处与Chat API存在差异。差异对比详见 SDK使用指南
-        messages=[
-            {"role": "system", "content": "你是一个家庭主妇。"},
-            {"role": "user", "content": "家里有500g的鸡腿，400g的藕，请帮我规划一下明天两人份的便当要做什么菜"},
-        ],
-    )
-    print(completion)
-    print(completion.choices[0].message.content)
-    if hasattr(completion, "references"):
-        print(completion.references)
-
 if __name__ == "__main__":
     # doubao_img()
-    # doubao_text()
-    doubao_text_2()
+    scrape_recipes()
+    # generate_recipe_based_on_ingredients()
