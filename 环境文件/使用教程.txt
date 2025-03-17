@@ -1,0 +1,5 @@
+在原先的环境生成requirements.txt，再在新环境中更具requirements.txt导入依赖：
+
+1、原先环境 / 开发环境中运行：pip freeze > requirements.txt
+
+2、新环境 / 生产环境中运行：pip install -r requirements.txt

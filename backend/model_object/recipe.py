@@ -1,4 +1,4 @@
-from cooking_time import CookingTime
+from .cooking_time import CookingTime
 
 # 食谱对象，每个菜谱的单个对象
 class Recipe():

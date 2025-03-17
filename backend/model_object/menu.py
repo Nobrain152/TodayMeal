@@ -1,4 +1,4 @@
-from recipe import Recipe
+from .recipe import Recipe
 
 # 菜单对象
 class Menu():

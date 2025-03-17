@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponse, JsonResponse
-from model_object.menu import Menu
+from .model_object.menu import Menu
 
 # 所有服务的初始化界面
 def index(reques):
